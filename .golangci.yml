@@ -1,6 +1,8 @@
 version: "2"
 run:
-  go: "1.26"
+  # CI currently provides golangci-lint binaries built with Go 1.24.
+  # Keep this at 1.24 until golangci-lint ships with a newer toolchain.
+  go: "1.24"
 linters:
   enable:
     - godot
