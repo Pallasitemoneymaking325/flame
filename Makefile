@@ -8,7 +8,7 @@ build:
 	go build -o $(BIN) ./cmd/flame/main.go
 
 run:
-	go run ./cmd/flame/main.go
+	go run ./cmd/flame/main.go $(ARGS)
 
 test:
 	go test ./...
