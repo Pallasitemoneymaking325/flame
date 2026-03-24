@@ -10,13 +10,14 @@ import (
 	tea "charm.land/bubbletea/v2"
 	"github.com/erik-adelbert/flame/flame"
 	"github.com/erik-adelbert/flame/pkg/epilepsy"
-
 	"golang.org/x/term"
 )
 
 // main initializes the fire simulation and starts the Bubble Tea program.
 func main() {
-	noWarning := flag.Bool("no-warning", false, "Skip the epilepsy warning screen")
+	noWarning := flag.Bool(
+		"no-warning", false, "Skip the epilepsy warning screen",
+	)
 	flag.Parse()
 
 	if !*noWarning {
