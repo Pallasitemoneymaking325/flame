@@ -16,13 +16,20 @@ func (m *Model) View() tea.View {
 	)
 
 	// preallocate the string builder
-	size := max(32768, 2*m.Size())
+	size := max(32768, 5*m.Size())
 	sb.Grow(size)
 
 	if !m.mute {
 		m.writeHeader(&sb)
 	}
 
+	// vertical padding for empty rows at the top of the grid
+	vpad := m.h - min(40, m.h)
+	for i = 0; i < vpad; i++ {
+		sb.WriteByte('\n')
+	}
+
+	// render the grid
 	for i < m.Size() {
 		// skip empty rows at the top of the grid
 		if i < m.row0*m.w {

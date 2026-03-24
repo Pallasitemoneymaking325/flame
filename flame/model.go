@@ -15,6 +15,7 @@ type Model struct {
 	power int
 
 	row0 int
+
 	grid []Symbol
 
 	heats []byte
@@ -25,12 +26,14 @@ type Model struct {
 
 // NewModel creates and returns a new Model with the given height and width.
 func NewModel(h, w int) *Model {
+	hmax := min(40, h)
+
 	return &Model{
 		h: h,
 		w: w,
 
-		grid:  make([]Symbol, h*w),
-		heats: make([]uint8, (h*w)+(w+1)),
+		grid:  make([]Symbol, hmax*w),
+		heats: make([]uint8, (hmax*w)+(w+1)),
 
 		heat0: BaseHeat,
 		power: BasePower,
@@ -40,20 +43,24 @@ func NewModel(h, w int) *Model {
 // Resize changes the dimensions of the Model and resets the heat and grid
 // slices.
 func (m *Model) Resize(h, w int) {
+	hmax := min(40, h)
+
 	if h*w > m.Size() {
-		m.heats = make([]uint8, (h*w)+(w+1))
-		m.grid = make([]Symbol, h*w)
+		m.heats = make([]uint8, (hmax*w)+(w+1))
+		m.grid = make([]Symbol, hmax*w)
 	}
 
 	m.h, m.w = h, w
 
-	m.heats = m.heats[:(h*w)+(w+1)]
-	m.grid = m.grid[:h*w]
+	m.heats = m.heats[:(hmax*w)+(w+1)]
+	m.grid = m.grid[:hmax*w]
 }
 
 // Size returns the total number of cells in the grid.
 func (m Model) Size() int {
-	return m.h * m.w
+	hmax := min(40, m.h)
+
+	return hmax * m.w
 }
 
 // IsEOL checks if the given index is at the end of a row in the grid.
@@ -64,19 +71,26 @@ func (m Model) IsEOL(i int) bool {
 // ignite randomly ignites new cells at the bottom of the grid to keep the fire
 // going.
 func (m *Model) ignite() {
-	row0 := (m.h - 1) * m.w
+	r := float64(m.w) * float64(m.power) / 500
+	n := max(1, int(r)) // spark count based on power level
 
-	sparks := max(1, m.w*m.power/900)
+	hmax := min(40, m.h)
 
-	for range sparks {
+	ω0 := (hmax - 1) * m.w    // index of the first cell in the bottom row
+	ω := m.heats[ω0 : ω0+m.w] // bottom row
+
+	clear(ω) // clear the bottom row before igniting new cells
+
+	for range n {
 		x := rand.IntN(m.w)
-		m.heats[row0+x] = m.heat0
+		ω[x] = m.heat0
 	}
 }
 
 // stepFire updates the heat values of the grid based on the current state and
 // the fire spreading algorithm.
 func (m *Model) stepFire() {
+
 	m.ignite()
 
 	for i := range m.Size() {
