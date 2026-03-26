@@ -4,7 +4,7 @@ A terminal DOOM fire animation and ASCII art CLI written in Go, built with Charm
 
 ## Demo
 
-![Flame Demo](https://github.com/user-attachments/assets/086c3c74-3235-4283-961b-755ecaa40edd)
+![Flame Demo](https://github.com/user-attachments/assets/79470acb-8e76-48c6-8d11-d744d8fedefe)
 
 ## Note on GPU-Accelerated Terminals
 
